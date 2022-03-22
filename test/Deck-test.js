@@ -1,9 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const Card = require('../src/Card');
-const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
-const data = require('../src/data.js');
 
 
 describe('Deck', function() {
@@ -33,7 +31,6 @@ describe('Deck', function() {
     const deck = new Deck([card1, card2, card3]);
 
     expect(deck.countCards()).to.equal(3);
-
   })
 
 });

@@ -62,3 +62,5 @@ describe('Turn', function() {
     expect(turn.giveFeedback()).to.equal('correct!');
   });
 });
+
+// refactor to use all example information
