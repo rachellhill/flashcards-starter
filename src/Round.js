@@ -22,6 +22,15 @@ class Round {
     }
     return turn.giveFeedback();
   }
+
+  calculatePercentageCorrect() {
+    const cardCount = this.deck.countCards();
+    const correctAnswers = cardCount - this.incorrectGuesses.length;
+    const percentage = (correctAnswers / cardCount) * 100;
+    const roundedPercentage = Math.round(percentage)
+    return roundedPercentage;
+  }
+
 }
 
 module.exports = Round;
