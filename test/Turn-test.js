@@ -43,15 +43,30 @@ describe('Turn', function() {
 
   it('should check to see if guess is correct', function() {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const turn = new Turn('array', card);
+    const turn = new Turn('object', card);
+
+    expect(turn.evaluateGuess()).to.equal(true);
+  });
+
+  it('should check to see if guess is incorrect', function() {
+    const card = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const turn = new Turn('pug', card);
 
     expect(turn.evaluateGuess()).to.equal(false);
   });
 
-  it('should give feedback whether the guess is correct or not', function() {
+  it('should give feedback if the guess is incorrect', function() {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
     const turn = new Turn('array', card);
 
     expect(turn.giveFeedback()).to.equal('incorrect!');
   });
+
+  it('should give feedback if the guess is correct', function() {
+    const card = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const turn = new Turn('sea otter', card);
+    expect(turn.giveFeedback()).to.equal('correct!');
+  });
 });
+
+// refactor to use all example information

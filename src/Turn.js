@@ -13,12 +13,10 @@ class Turn {
   }
 
   evaluateGuess() {
-    if(this.guess === this.card.correctAnswer) {
-      return true;
-    } else{
-      return false;
-    }
+    // attempt to refactor later - put in card class
+    return (this.returnGuess() === this.card.correctAnswer)
   }
+// refactor: move evaluate guess to card file
 
   giveFeedback() {
     if(this.evaluateGuess()) {
