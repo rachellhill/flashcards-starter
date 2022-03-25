@@ -9,31 +9,38 @@ const Round = require('../src/Round');
 class Game {
   constructor() {
     this.cards = [];
-  }
+  };
 
-  printMessage(deck, round) {
+  printMessage(deck) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
-  }
+};
 
   printQuestion(round) {
       util.main(round);
-  }
+  };
 
   start() {
     this.createCards();
-    const deck = new Deck(this.cards)
-    this.currentRound = new Round(deck);
-    this.printMessage(deck);
+    this.createDeck();
+    this.createRound();
+    this.printMessage(this.deck);
     this.printQuestion(this.currentRound);
-  }
+  };
 
   createCards() {
     prototypeQuestions.forEach((question) => {
       this.cards.push(new Card(question.id, question.question, question.answers, question.correctAnswer));
-    })
-  }
+    });
+  };
 
-}
+  createDeck() {
+    this.deck = new Deck(this.cards)
+  };
+
+  createRound() {
+    this.currentRound = new Round(this.deck);
+  };
+};
 
 module.exports = Game;
